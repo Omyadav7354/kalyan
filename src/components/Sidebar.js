@@ -30,6 +30,13 @@ const Sidebar = () => {
           <FaHome className="text-2xl" />
           <span className="text-sm mt-1">Dashboard</span>
         </li>
+        <li
+          onClick={() => navigate("/market")}
+          className="flex flex-col items-center cursor-pointer p-2 hover:text-blue-400 transition duration-300"
+        >
+          <FaChartBar className="text-2xl" />
+          <span className="text-sm mt-1">Products</span>
+        </li>
         {/* <li
           onClick={() => navigate("/transactions")}
           className="flex flex-col items-center cursor-pointer p-2 hover:text-blue-400 transition duration-300"
@@ -37,13 +44,7 @@ const Sidebar = () => {
           <FaPlusCircle className="text-2xl" />
           <span className="text-sm mt-1">Add Fund</span>
         </li>
-        <li
-          onClick={() => navigate("/market")}
-          className="flex flex-col items-center cursor-pointer p-2 hover:text-blue-400 transition duration-300"
-        >
-          <FaChartBar className="text-2xl" />
-          <span className="text-sm mt-1">Market</span>
-        </li>
+        
         <li
           onClick={() => navigate("/MarketHistory")}
           className="flex flex-col items-center cursor-pointer p-2 hover:text-blue-400 transition duration-300"

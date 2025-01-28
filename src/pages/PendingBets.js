@@ -13,7 +13,7 @@ function PendingBets() {
   });
   const [sortBy, setSortBy] = useState(null); // "asc" or "desc"
   const [markets, setMarkets] = useState([]); // Dropdown options
-
+  
   const fetchSettledBets = async () => {
     try {
       const response = await axios.get(

@@ -9,6 +9,7 @@ import {
 import Dashboard from "./pages/Dashboard";
 import UserManagement from "./pages/UserManagement";
 import Context from "./pages/Context";
+import Market from "./pages/Market";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 
@@ -16,7 +17,7 @@ import Sidebar from "./components/Sidebar";
 const Layout = ({ children }) => {
   const location = useLocation();
   const showHeaderAndSidebar =
-    location.pathname === "/";
+   true
 
   return (
     <div className="flex flex-col h-screen">
@@ -51,6 +52,14 @@ function App() {
             element={
                 <Layout>
                   <UserManagement />
+                </Layout>
+            }
+          />
+          <Route
+            path="/market"
+            element={
+                <Layout>
+                  <Market />
                 </Layout>
             }
           />
