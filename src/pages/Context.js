@@ -7,7 +7,7 @@ function Context({children}) {
     const [allUserData, setAllUserData] = useState([])
     const getAllUserFn = ()=>{
         axios.get("https://sratebackend-1.onrender.com/user").then((res)=> setAllUserData(res.data))
-    }
+    } 
 
     const [marketData, setMarketData] = useState([])
     const getMarketData = ()=>{
