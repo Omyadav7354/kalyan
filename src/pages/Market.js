@@ -144,6 +144,7 @@ const Market = () => {
                   </button>
                 </td>
               </tr>
+            ))}
           
           </tbody>
         </table>

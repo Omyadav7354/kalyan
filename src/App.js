@@ -12,6 +12,8 @@ import Context from "./pages/Context";
 import Market from "./pages/Market";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import Blog from "./pages/Blog";
+
 
 
 const Layout = ({ children }) => {
@@ -58,6 +60,14 @@ function App() {
             element={
                 <Layout>
                   <Market />
+                </Layout>
+            }
+          />
+          <Route
+            path="/blog"
+            element={
+                <Layout>
+                  <Blog />
                 </Layout>
             }
           />
