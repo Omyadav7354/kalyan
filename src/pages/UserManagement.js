@@ -9,6 +9,7 @@ const UserManagement = () => {
     getUserData();
   }, []);
 
+
   const { getAllUserFn } = useContext(MyData);
 
   const [isCreditModalOpen, setIsCreditModal] = useState(false);
@@ -50,7 +51,6 @@ const UserManagement = () => {
     }
   };
 
-
   const handleDebit = async (user) => {
     try {
       const oldWithdrawals = user.withdrawalRequest || [];
@@ -76,7 +76,6 @@ const UserManagement = () => {
     }
   };
 
-  
   const [allUserData, setAllUserData] = useState([]);
   const getUserData = () => {
     axios.get("http://localhost:9000/users").then(
@@ -91,15 +90,12 @@ const UserManagement = () => {
     axios.delete(`http://localhost:9000/users/${id}`).then(
       (res) => {
         alert("User Deleted!");
-        getUserData()
+        getUserData();
       },
       (err) => alert(err.message)
     );
   };
 
-
-
- 
   return (
     <div className="p-6 bg-gray-100 h-full">
       {JSON.stringify(allUserData)}
@@ -118,7 +114,7 @@ const UserManagement = () => {
           <tbody>
             {allUserData.map((i, index) => (
               <tr className="hover:bg-gray-100">
-                <td className="py-2 px-4 border">{index+1} </td>
+                <td className="py-2 px-4 border">{index + 1} </td>
                 <td className="py-2 px-4 border">{i.name}</td>
                 <td className="py-2 px-4 border">{i.email}</td>
                 <td className="py-2 px-4 border">{i.mobile}</td>
@@ -219,4 +215,3 @@ const UserManagement = () => {
 };
 
 export default UserManagement;
-
