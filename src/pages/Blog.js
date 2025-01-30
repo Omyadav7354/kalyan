@@ -65,9 +65,9 @@ const Blog = () => {
             <tr>
               {[
                 "S.No",
-                "Title",
+                "image",
+                "title",
                 "description",
-                "Image",
               ].map((header) => (
                 <th
                   key={header}
@@ -82,24 +82,25 @@ const Blog = () => {
             {allBlogData.map((i, index) => (
               <tr className="hover:bg-gray-50">
                 <td className="px-6 py-4 whitespace-nowrap">{index + 1}</td>
-                <td className="px-6 py-4">{i.title}</td>
-                <td className="px-6 py-4">{i.description}</td>
                 <td className="px-6 py-4">
                   <img className="h-12  w-15 " src={i.images}></img>
                 </td>
+                <td className="px-6 py-4">{i.title}</td>
+                <td className="px-6 py-4">{i.description}</td>
+               
                 <td className="px-6 py-4 flex gap-2">
                   <button
                     onClick={() => {
                       setBlogDetail(i);
                       setShowModal("Edit Blog");
                     }}
-                    className="text-indigo-600 hover:text-indigo-900"
+                    className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-indigo-600  "
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => deleteBlog(i._id)}
-                    className="text-indigo-600 hover:text-indigo-900"
+                    className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-indigo-600"
                   >
                     Delete
                   </button>

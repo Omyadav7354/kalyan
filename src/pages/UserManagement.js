@@ -118,7 +118,7 @@ const UserManagement = () => {
                 <td className="py-2 px-4 border">{i.name}</td>
                 <td className="py-2 px-4 border">{i.email}</td>
                 <td className="py-2 px-4 border">{i.mobile}</td>
-                <button onClick={()=> deleteUser(i._id)} className="bg-red-600 h-8 w-[90px]">Delete</button>
+                <button onClick={()=> deleteUser(i._id)} className="bg-red-600 text-white hover:bg-blue-500 h-8 w-[90px]">Delete</button>
               </tr>
             ))}
           </tbody>
@@ -153,7 +153,7 @@ const UserManagement = () => {
             <div className="mt-4 text-right">
               <button
                 onClick={closeModal}
-                className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600"
+                className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-indigo-600"
               >
                 Cancel
               </button>

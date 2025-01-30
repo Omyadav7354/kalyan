@@ -88,6 +88,33 @@ const Market = () => {
           Add New Product
         </button>
       </div>
+      {/* Filter Inputs */}
+      <div className="flex space-x-4 mb-6">
+          <input
+            type="text"
+            name="username"
+            placeholder="Filter by Username"
+            className="p-2 border border-gray-300 rounded"
+          />
+
+          <select
+            name="market"
+            className="p-2 border border-gray-300 rounded"
+          >
+            <option value="">All Category</option>
+            {["xyz", "abc", "bcd"].map((i, index) => (
+              <option key={index} >
+               {i}
+              </option>
+            ))}
+          </select>
+
+          <button
+            className="px-4 py-2 bg-blue-500 hover:bg-red-500 text-white rounded"
+          >
+            Sort by Price
+          </button>
+        </div>
 
       {/* Market Table */}
       <div className="overflow-x-auto bg-white rounded-lg shadow">
@@ -96,13 +123,12 @@ const Market = () => {
             <tr>
               {[
                 "S.No",
+                "Image",
                 "Title",
                 "Category",
                 "Price",
                 "Discount(%)",
                 "description",
-                "Image",
-
                 "Actions",
               ].map((header) => (
                 <th
@@ -118,27 +144,28 @@ const Market = () => {
             {allProductData.map((i, index) => (
               <tr className="hover:bg-gray-50">
                 <td className="px-6 py-4 whitespace-nowrap">{index + 1}</td>
+                <td className="px-6 py-4">
+                  <img className="h-12  w-15 " src={i.images[0]}></img>
+                </td>
                 <td className="px-6 py-4">{i.title}</td>
                 <td className="px-6 py-4">{i.category}</td>
                 <td className="px-6 py-4">{i.price}</td>
                 <td className="px-6 py-4">{i.discount}</td>
                 <td className="px-6 py-4">{i.description}</td>
-                <td className="px-6 py-4">
-                  <img className="h-12  w-15 " src={i.images[0]}></img>
-                </td>
+                
                 <td className="px-6 py-4 flex gap-2">
                   <button
                     onClick={() => {
                       setProductDetail(i);
                       setShowModal("Edit Product");
                     }}
-                    className="text-indigo-600 hover:text-indigo-900"
+                    className="bg-red-600 text-white hover:bg-blue-500 h-8 w-[90px]"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => deleteProduct(i._id)}
-                    className="text-indigo-600 hover:text-indigo-900"
+                    className="bg-red-600 text-white hover:bg-blue-500 h-8 w-[90px]"
                   >
                     Delete
                   </button>
