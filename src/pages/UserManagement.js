@@ -16,6 +16,9 @@ const UserManagement = () => {
       (err) => {}
     );
   };
+  const [filterUser, setFilterUser] = useState("")
+  
+  
 
   const deleteUser = (id) => {
     axios.delete(`http://localhost:9000/users/${id}`).then(
@@ -29,6 +32,14 @@ const UserManagement = () => {
 
   return (
     <div className="p-6 bg-gray-100 h-full">
+
+    <input
+          onChange={(e) => setFilterUser(e.target.value)}
+          type="Product Title"
+          name="Product Title"
+          placeholder="Filter by Title"
+          className="p-2 border border-gray-300 rounded"
+        />
      
       <h1 className="text-3xl font-bold mb-4">User Management</h1>
       
@@ -44,7 +55,7 @@ const UserManagement = () => {
             </tr>
           </thead>
           <tbody>
-            {allUserData.map((i, index) => (
+            {allUserData.filter((i) =>i.name.toLowerCase().includes(filterUser.toLowerCase()) ).map((i, index) => (
               <tr className="hover:bg-gray-100">
                 <td className="py-2 px-4 border">{index + 1} </td>
                 <td className="py-2 px-4 border">{i.name}</td>
