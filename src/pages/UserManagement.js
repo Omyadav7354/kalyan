@@ -13,30 +13,7 @@ const UserManagement = () => {
   
 
 
-  const handleDebit = async (user) => {
-    try {
-      const oldWithdrawals = user.withdrawalRequest || [];
-      await axios.put(`https://sratebackend-1.onrender.com/user/${user._id}`, {
-        wallet: +user.wallet - +amount,
-        withdrawalRequest: [
-          ...oldWithdrawals,
-          {
-            amount,
-            status: "Approved",
-            requestTime: Date.now(),
-            username: user._id,
-            message,
-          },
-        ],
-      });
-      alert("Debited Successfully");
-      setIsDebitModal(false);
-      getAllUserFn();
-    } catch (err) {
-      console.error("Failed to Debit:", err);
-      alert("Failed to Debit. Please try again.");
-    }
-  };
+  
 
   const [allUserData, setAllUserData] = useState([]);
   const getUserData = () => {
@@ -62,13 +39,7 @@ const UserManagement = () => {
     <div className="p-6 bg-gray-100 h-full">
      
       <h1 className="text-3xl font-bold mb-4">User Management</h1>
-      <div>
-        <input onChange={(e)=> setUserDetail({...userDetail, name: e.target.value})} placeholder="name"></input>
-        <input onChange={(e)=> setUserDetail({...userDetail, mobile: e.target.value})} placeholder="number"></input>
-        <input onChange={(e)=> setUserDetail({...userDetail, password: e.target.value})} placeholder="password"></input>
-        <input onChange={(e)=> setUserDetail({...userDetail, email: e.target.value})} placeholder="mail"></input>
-        <button onClick={()=> addUser()}>Submit</button>
-      </div>
+      
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white rounded-lg shadow-lg">
           <thead className="bg-gray-200">
