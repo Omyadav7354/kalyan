@@ -8,9 +8,6 @@ const Blog = () => {
   const [showModal, setShowModal] = useState("");
   const [blogDetail, setBlogDetail] = useState({});
   
-
- 
-
   const postBlogdata = () => {
     axios.post("http://localhost:9000/blog", blogDetail).then((res) => {
       alert("Updated Successfully");

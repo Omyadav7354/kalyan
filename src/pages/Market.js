@@ -76,10 +76,23 @@ const Market = () => {
     )
   }
 
+  const [filterTitle, setFilterTitle] = useState("")
+  const [filterCategory, setFilterCategory] = useState("")
+  const [sortPrice, setSortPrice] = useState("")
+  const categories = [...new Set(allProductData.map((i)=> i.category))]
+  const sortByPriceFn = ()=>{
+
+    sortPrice == "Asc" ? setSortPrice("Des") : setSortPrice("Asc")
+    let sortedList = allProductData.sort((a,b)=> sortPrice == "Asc" ? a.price - b.price : b.price - a.price)
+    setAllProductData(sortedList)
+  }
+
   // UI Components
   return (
     <div className="p-6 bg-gray-100 min-h-screen">
+    {JSON.stringify(categories)}
       <div className="flex justify-between items-center mb-6">
+      
         <h1 className="text-3xl font-bold">Product Management</h1>
         <button
           onClick={() => setShowModal("Add Product")}
@@ -91,28 +104,31 @@ const Market = () => {
       {/* Filter Inputs */}
       <div className="flex space-x-4 mb-6">
           <input
-            type="text"
-            name="username"
-            placeholder="Filter by Username"
+          onChange={(e)=> setFilterTitle(e.target.value)}
+            type="Product Title"
+            name="Product Title"
+            placeholder="Filter by Title"
             className="p-2 border border-gray-300 rounded"
           />
 
           <select
+           onChange={(e)=> setFilterCategory(e.target.value)}
             name="market"
             className="p-2 border border-gray-300 rounded"
           >
             <option value="">All Category</option>
-            {["xyz", "abc", "bcd"].map((i, index) => (
-              <option key={index} >
+            {categories.map((i, index) => (
+              <option value={i} key={index} >
                {i}
               </option>
             ))}
           </select>
 
           <button
+          onClick={()=> sortByPriceFn()}
             className="px-4 py-2 bg-blue-500 hover:bg-red-500 text-white rounded"
           >
-            Sort by Price
+            Sort by Price ({sortPrice})
           </button>
         </div>
 
@@ -128,7 +144,7 @@ const Market = () => {
                 "Category",
                 "Price",
                 "Discount(%)",
-                "description",
+                "discounted Price",
                 "Actions",
               ].map((header) => (
                 <th
@@ -141,7 +157,7 @@ const Market = () => {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {allProductData.map((i, index) => (
+            {allProductData.filter((i)=> i.title.toLowerCase().includes(filterTitle.toLowerCase()) && i.category.includes(filterCategory)).map((i, index) => (
               <tr className="hover:bg-gray-50">
                 <td className="px-6 py-4 whitespace-nowrap">{index + 1}</td>
                 <td className="px-6 py-4">
@@ -149,9 +165,9 @@ const Market = () => {
                 </td>
                 <td className="px-6 py-4">{i.title}</td>
                 <td className="px-6 py-4">{i.category}</td>
-                <td className="px-6 py-4">{i.price}</td>
-                <td className="px-6 py-4">{i.discount}</td>
-                <td className="px-6 py-4">{i.description}</td>
+                <td className="px-6 py-4">₹{i.price}</td>
+                <td className="px-6 py-4">{i.discount}%</td>
+                <td className="px-6 py-4">₹{Math.floor((i.price*i.discount)/100)}</td>
                 
                 <td className="px-6 py-4 flex gap-2">
                   <button

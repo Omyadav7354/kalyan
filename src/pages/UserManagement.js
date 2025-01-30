@@ -5,15 +5,7 @@ import axios from "axios";
 const UserManagement = () => {
   useEffect(() => {
     getUserData();
-  }, []);
-
-
-  const { getAllUserFn } = useContext(MyData);
-
-  
-
-
-  
+  }, []);  
 
   const [allUserData, setAllUserData] = useState([]);
   const getUserData = () => {
@@ -65,91 +57,9 @@ const UserManagement = () => {
         </table>
       </div>
 
-      {/* Credit Modal */}
-      {isCreditModalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg p-6 max-w-md mx-auto">
-            <h2 className="text-xl font-bold mb-4">
-              Add Credit for {selectedUser.username}
-            </h2>
-            <div className="space-y-2">
-              <label className="block text-sm font-medium">Amount:</label>
-              <input
-                type="number"
-                placeholder="Enter Amount"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                className="border p-2 w-full rounded-md"
-              />
-              <label className="block text-sm font-medium">Reason:</label>
-              <input
-                type="text"
-                placeholder="Enter Reason"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                className="border p-2 w-full rounded-md"
-              />
-            </div>
-            <div className="mt-4 text-right">
-              <button
-                onClick={closeModal}
-                className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-indigo-600"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={() => handleCredit(selectedUser)}
-                className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600"
-              >
-                Add Credit
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+     
 
-      {/* Debit Modal */}
-      {isDebitModalOpen && selectedUser && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white rounded-lg p-6 max-w-md mx-auto">
-            <h2 className="text-xl font-bold mb-4">
-              Debit Amount for {selectedUser.username}
-            </h2>
-            <div className="space-y-2">
-              <label className="block text-sm font-medium">Amount:</label>
-              <input
-                type="number"
-                placeholder="Enter Amount"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                className="border p-2 w-full rounded-md"
-              />
-              <label className="block text-sm font-medium">Reason:</label>
-              <input
-                type="text"
-                placeholder="Enter Reason"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                className="border p-2 w-full rounded-md"
-              />
-            </div>
-            <div className="mt-4 text-right">
-              <button
-                onClick={closeModal}
-                className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={() => handleDebit(selectedUser)}
-                className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600"
-              >
-                Debit
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      
     </div>
   );
 };
