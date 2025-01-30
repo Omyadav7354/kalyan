@@ -60,7 +60,7 @@ const UserManagement = () => {
 
   return (
     <div className="p-6 bg-gray-100 h-full">
-      {JSON.stringify(userDetail)}
+     
       <h1 className="text-3xl font-bold mb-4">User Management</h1>
       <div>
         <input onChange={(e)=> setUserDetail({...userDetail, name: e.target.value})} placeholder="name"></input>
@@ -87,7 +87,7 @@ const UserManagement = () => {
                 <td className="py-2 px-4 border">{i.name}</td>
                 <td className="py-2 px-4 border">{i.email}</td>
                 <td className="py-2 px-4 border">{i.mobile}</td>
-                <button className="bg-red-600"></button>
+                <button onClick={()=> deleteUser(i._id)} className="bg-red-600 h-8 w-[90px]">Delete</button>
               </tr>
             ))}
           </tbody>
